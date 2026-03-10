@@ -1,6 +1,6 @@
 /**
  * OOPSBannerApp
- * UC7: Store character patterns in a class
+ * UC8: Use HashMap for character patterns and render banner using function
  *
  * @author Mithul
  * @version 1.0
@@ -11,56 +11,61 @@ import java.util.Map;
 
 public class OOPSBannerApp {
 
-    /**
-     * Static inner class to store character and its pattern
-     */
-    static class CharacterPatternMap {
+    // Map to store patterns
+    static Map<Character, String[]> patternMap = new HashMap<>();
 
-        private char character;
-        private String pattern;
+    // Initialize character patterns
+    public static void initializePatterns() {
 
-        public CharacterPatternMap(char character, String pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+        patternMap.put('O', new String[]{
+            " OOO ",
+            "O   O",
+            "O   O",
+            "O   O",
+            " OOO "
+        });
 
-        public char getCharacter() {
-            return character;
-        }
+        patternMap.put('P', new String[]{
+            "PPPP ",
+            "P   P",
+            "PPPP ",
+            "P    ",
+            "P    "
+        });
 
-        public String getPattern() {
-            return pattern;
+        patternMap.put('S', new String[]{
+            " SSS ",
+            "S    ",
+            " SSS ",
+            "    S",
+            " SSS "
+        });
+    }
+
+    // Function to render banner word
+    public static void renderBanner(String word) {
+
+        int height = 5;
+
+        for (int i = 0; i < height; i++) {
+
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+
+                String[] pattern = patternMap.get(ch);
+                line.append(pattern[i]).append(" ");
+            }
+
+            System.out.println(line);
         }
     }
 
     public static void main(String[] args) {
 
-        // Map to store character patterns
-        Map<Character, String> patternMap = new HashMap<>();
+        initializePatterns();
 
-        patternMap.put('O', "OOOO");
-        patternMap.put('P', "PPPP");
-        patternMap.put('S', "SSSS");
-
-        // Banner lines built using stored patterns
-        String[] banner = {
-            String.join(" ",
-                patternMap.get('O'),
-                patternMap.get('O'),
-                patternMap.get('P'),
-                patternMap.get('P'),
-                patternMap.get('S')
-            ),
-            String.join(" ", "O", "O", "P", "P", "S"),
-            String.join(" ", "O", "O", patternMap.get('P'), patternMap.get('S')),
-            String.join(" ", "O", "O", "P", "S"),
-            String.join(" ", patternMap.get('O'), "P", patternMap.get('S'))
-        };
-
-        // Print banner
-        for (String line : banner) {
-            System.out.println(line);
-        }
+        renderBanner("OOPS");
     }
 }
 
