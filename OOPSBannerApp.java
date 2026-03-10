@@ -32,3 +32,30 @@ public class OOPSBannerApp {
         System.out.println(line5);
     }
 }
+/**
+ * OOPSBannerApp
+ * UC4: Print OOPS Banner using Array and Loop
+ *
+ * @author Mithul
+ * @version 1.0
+ */
+
+public class OOPSBannerApp {
+
+    public static void main(String[] args) {
+
+        // Banner lines stored in array using String.join()
+        String[] banner = {
+            String.join(" ", "OOOO", "OOOO", "PPPP", "PPPP", "SSSS"),
+            String.join(" ", "O", "O", "P", "P", "S"),
+            String.join(" ", "O", "O", "PPPP", "SSSS"),
+            String.join(" ", "O", "O", "P", "S"),
+            String.join(" ", "OOOO", "P", "SSSS")
+        };
+
+        // Print banner using loop
+        for (String line : banner) {
+            System.out.println(line);
+        }
+    }
+}
