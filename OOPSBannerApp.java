@@ -23,4 +23,26 @@ public class OOPSBannerApp {
         // Line 7
         System.out.println("  *****  " + "  *****  " + "  *      " + " *****   ");
     }
+
+
+/**
+ * OOPSBannerApp
+ * 
+ * UC1: Print the literal text "OOPS"
+ * 
+ * @author Mithul
+ * @version 1.0
+ */
+
+public class OOPSBannerApp {
+
+    /**
+     * Main method - Entry point of the application
+     */
+    public static void main(String[] args) {
+
+        // Print OOPS to console
+        System.out.println("OOPS");
+
+    }
 }
