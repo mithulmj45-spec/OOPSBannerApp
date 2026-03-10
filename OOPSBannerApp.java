@@ -1,42 +1,66 @@
 /**
  * OOPSBannerApp
- * UC6: Banner generation using static helper functions
+ * UC7: Store character patterns in a class
  *
  * @author Mithul
  * @version 1.0
  */
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBannerApp {
 
-    // Helper method to generate O pattern
-    public static String buildO() {
-        return "OOOO";
-    }
+    /**
+     * Static inner class to store character and its pattern
+     */
+    static class CharacterPatternMap {
 
-    // Helper method to generate P pattern
-    public static String buildP() {
-        return "PPPP";
-    }
+        private char character;
+        private String pattern;
 
-    // Helper method to generate S pattern
-    public static String buildS() {
-        return "SSSS";
+        public CharacterPatternMap(char character, String pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String getPattern() {
+            return pattern;
+        }
     }
 
     public static void main(String[] args) {
 
-        // Banner lines built using helper methods
+        // Map to store character patterns
+        Map<Character, String> patternMap = new HashMap<>();
+
+        patternMap.put('O', "OOOO");
+        patternMap.put('P', "PPPP");
+        patternMap.put('S', "SSSS");
+
+        // Banner lines built using stored patterns
         String[] banner = {
-            String.join(" ", buildO(), buildO(), buildP(), buildP(), buildS()),
+            String.join(" ",
+                patternMap.get('O'),
+                patternMap.get('O'),
+                patternMap.get('P'),
+                patternMap.get('P'),
+                patternMap.get('S')
+            ),
             String.join(" ", "O", "O", "P", "P", "S"),
-            String.join(" ", "O", "O", buildP(), buildS()),
+            String.join(" ", "O", "O", patternMap.get('P'), patternMap.get('S')),
             String.join(" ", "O", "O", "P", "S"),
-            String.join(" ", buildO(), "P", buildS())
+            String.join(" ", patternMap.get('O'), "P", patternMap.get('S'))
         };
 
-        // Loop to print banner
+        // Print banner
         for (String line : banner) {
             System.out.println(line);
         }
     }
 }
+
